@@ -1,0 +1,29 @@
+load(":exercises.bzl", "get_exercise_info")
+load("@bazel_binaries//:defs.bzl", "bazel_binaries")
+load(
+    "@rules_bazel_integration_test//bazel_integration_test:defs.bzl",
+    "bazel_integration_test",
+    "default_test_runner",
+)
+
+default_test_runner(name = "test_runner")
+
+[
+    bazel_integration_test(
+        name = exercise.lesson_name,
+        bazel_binaries = bazel_binaries,
+        bazel_version = bazel_binaries.versions.current,
+        test_runner = ":test_runner",
+        workspace_path = exercise.workspace_path,
+    )
+    for exercise in get_exercise_info()
+]
+
+test_suite(
+    name = "all_lessons",
+    tests = [
+        exercise.lesson_name
+        for exercise in get_exercise_info()
+    ],
+    visibility = ["//:__subpackages__"],
+)
