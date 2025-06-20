@@ -2,3 +2,7 @@
 # `bazel run @rules_bazel_integration_test//tools:update_deleted_packages`
 build --deleted_packages=exercises/00_intro
 query --deleted_packages=exercises/00_intro
+
+test --test_output=streamed
+test --test_keep_going=false
+test --test_runner_fail_fast
