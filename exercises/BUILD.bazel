@@ -16,7 +16,6 @@ default_test_runner(name = "test_runner")
         test_runner = ":test_runner",
         workspace_path = exercise.workspace_path,
         tags = [
-            # TODO config the tags so that on CI tests aren't exclusive and you can run them in parallel
             "exclusive",
         ]
     )
