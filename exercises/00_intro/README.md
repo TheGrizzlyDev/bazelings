@@ -51,3 +51,10 @@ bazel test //exercises:*
 ```
 
 With that said, good luck and see you on the next lesson!
+
+## BUILD.bazel and MODULE.bazel
+
+Bazel projects can be identified by the presence of a MODULE.bazel at the root[^workspace_vs_module_footnote]. Each project is called a `workspace`. A `workspace` can depend on multiple other workspaces, like rulesets, tools or libraries. `MODULE.bazel` is used to pull and configure dependencies. On the other hand, `BUILD.bazel`[^build_file_names] is where your actual build targets live and where you will be spending most of your time writing build scripts. Any directory can have at most a `BUILD.bazel` or none. When a build file is present that directory will be marked as a package. This does not mean much yet, but later on we will be digging more into this topic.
+
+[^workspace_vs_module_footnote]: in older bazel releases it was possible to use WORKSPACE.bazel instead but since the workspace mechanism is being replaced by bzlmod, we won't cover it.
+[^build_file_names]: a build file can be named either `BUILD.bazel` or just simply `BUILD`. Initially, the default was the latter, but due to collisions with other build tools that used identically named files or output directories, the former should be preferred.
