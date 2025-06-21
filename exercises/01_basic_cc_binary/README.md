@@ -6,6 +6,14 @@ Like in other build systems, in Bazel there is a concept of target. In bazel a t
 - metadata: unlike most build systems, targets in Bazel can generate a number of metadata, which are often read by other rules or Bazel itself to carry out useful functionalities
 - actions: individual commands that are executed to generate outputs
 
-Later on, we will be building our very own rules, but most of the time that isn't needed. You can usually find battle tested rules for your language (scala -> rules_scala, js -> rules_js, go -> rules_go, etc.) or tools (containers -> rules_oci, gazelle, etc.) readily available on [BCR](https://registry.bazel.build/)(Bazel Centraly Registry - a registry for Bazel native dependencies) or embedded within Bazel itself. A collection of rules is called `ruleset`. In the following exercises we will be focusing on C++, but don't worry, you won't have to be proficient about C++ at all!
+Later on, we will be building our very own rules, but most of the time that isn't needed. You can usually find battle tested rules for your language (scala -> rules_scala, js -> rules_js, go -> rules_go, etc.) or tools (containers -> rules_oci, gazelle, etc.) readily available on [BCR](https://registry.bazel.build/)(Bazel Centraly Registry - a registry for Bazel native dependencies) or embedded within Bazel itself. A collection of rules is called `ruleset`. In the following exercise we will be focusing on C++, but don't worry, you won't have to be proficient about C++ at all!
 
 Most language rulesets expose some very similar rules to create libraries (\*_library), binaries (\*_binary)  and run tests (\*_test). We will start with a simple C++ binary built using the rule `cc_binary`.
+
+## Adding inputs
+
+Most rules in Bazel take 2 types of inputs, corresponding to two separate attributes:
+- srcs: contains the source file in the language you're writing in, like in this case C++ sources, headers or even archives. Usually this attribute restricts the kind of extensions that can be used and forwards a bunch of metadata downstream that is unique to the language itself
+- data: contains other inputs that are needed at runtime rather than at build time. Think datasets used by tests or configurations required by binaries
+
+For now, let's only focus on srcs since it's the simples of the 2. See the rule in `BUILD.bazel`? It's currently missing any srcs, so it doesn't know what files to compile. Can you fix that?
