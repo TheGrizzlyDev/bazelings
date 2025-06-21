@@ -15,9 +15,6 @@ default_test_runner(name = "test_runner")
         bazel_version = bazel_binaries.versions.current,
         test_runner = ":test_runner",
         workspace_path = exercise.workspace_path,
-        tags = [
-            "exclusive",
-        ]
     )
     for exercise in get_exercise_info()
 ]
