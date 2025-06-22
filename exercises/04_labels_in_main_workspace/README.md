@@ -35,3 +35,7 @@ There is a lot more to learn about labels, but it requires understanding how Baz
 # Deps attribute
 
 When a rule needs to depend on other rules, the convention is to do so via an attribute called `deps`, which is an array of labels. Again, like with `srcs` and `data` this is just a convention, but there is no particular meaning to any of these attributes as far as Bazel is concerned. 
+
+# Using labels in commands
+
+Labels are not only useful within builds but can also be used in conjunction with multiple bazel commands. For example, every time you've been running `bazel test //exercises:<lesson_name>_test` the last part was the label of the test associated with each lesson. This same approach can be used with `build`, `run` and as part of more complex commands like query. The target in `test` and `build` isn't actually just a target, but rather a list of target patterns, which allows you to match multiple targets the same way that globs match files. If you're curious about target patterns you can read the [following docs](https://bazel.build/run/build#specifying-build-targets).
