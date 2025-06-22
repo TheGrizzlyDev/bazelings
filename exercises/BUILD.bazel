@@ -6,7 +6,13 @@ load(
     "default_test_runner",
 )
 
-default_test_runner(name = "test_runner")
+default_test_runner(
+    name = "test_runner",
+    bazel_cmds = [
+        "info", 
+        "test --sandbox_debug //...", # This way the parent Bazel process' sandbox debug option is respected
+    ],
+)
 
 [
     bazel_integration_test(
