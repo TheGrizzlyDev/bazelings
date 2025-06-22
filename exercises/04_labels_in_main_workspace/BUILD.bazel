@@ -1,0 +1,13 @@
+load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
+
+# https://bazel.build/reference/be/general#genrule
+genrule(
+    name = "hello_world",
+    outs = ["hello-world.txt"],
+)
+
+diff_test(
+    name = "hello_world_diff_test",
+    file1 = "hello-world.txt",
+    file2 = "expected.txt",
+)
