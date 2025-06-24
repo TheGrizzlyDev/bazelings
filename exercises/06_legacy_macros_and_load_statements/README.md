@@ -1,0 +1,2 @@
+# Extending Bazel - legacy macros
+

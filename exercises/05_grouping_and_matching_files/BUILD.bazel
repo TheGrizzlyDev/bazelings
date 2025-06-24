@@ -1,0 +1,26 @@
+load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
+
+genrule(
+    name = "count_to_4_glob",
+    outs = ["count-to-4-glob.txt"],
+    cmd  = "cat $(location :num_1.txt) $(location :num_2.txt) $(location :num_3.txt) $(location :num_4.txt) > $(OUTS)",
+    srcs = [], # match all resources using 'num_*.txt'
+)
+
+# read about filegroup in https://bazel.build/reference/be/general#filegroup
+
+genrule(
+    name = "count_to_4_filgroup",
+    outs = ["count-to-4-filgroup.txt"],
+    cmd  = "cat $(locations :numbers) > $(OUTS)",
+    srcs = [":numbers"],
+)
+
+[
+    diff_test(
+        name = "diff_" + count_rule + "_test",
+        file1 = count_rule,
+        file2 = "expected.txt",
+    )
+    for count_rule in ["count_to_4_filgroup", "count_to_4_glob"]
+]
