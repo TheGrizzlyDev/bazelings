@@ -7,7 +7,7 @@ load(
 )
 
 default_test_runner(
-    name = "test_runner",
+    name = "default_test_runner",
     bazel_cmds = [
         "info", 
         "test --sandbox_debug //...", # This way the parent Bazel process' sandbox debug option is respected
@@ -16,10 +16,10 @@ default_test_runner(
 
 [
     bazel_integration_test(
-        name = exercise.lesson_name,
+        name = exercise.lesson_name + "_test",
         bazel_binaries = bazel_binaries,
         bazel_version = bazel_binaries.versions.current,
-        test_runner = ":test_runner",
+        test_runner = ":default_test_runner" if exercise.use_default_runner else (":" + exercise.lesson_name + "_runner"),
         workspace_path = exercise.workspace_path,
     )
     for exercise in get_exercise_info()
@@ -28,7 +28,7 @@ default_test_runner(
 test_suite(
     name = "all_lessons",
     tests = [
-        exercise.lesson_name
+        exercise.lesson_name + "_test"
         for exercise in get_exercise_info()
     ],
     visibility = ["//:__subpackages__"],
