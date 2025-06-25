@@ -1,0 +1,48 @@
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("macro.bzl", "py_genrule")
+
+# Can you create a py_genrule macro that expands to the following?
+# 
+# genrule(
+#     name = "fibonacci_42_py_script_to_file",
+#     outs = ["fibonacci_42_gen.py"],
+#     cmd  = """
+# cat <<EOF > $(OUTS)
+# def fibonacci(n):
+#     if n <= 1:
+#         return 1
+#     return fibonacci(n) + fibonacci(n - 1)
+# print(fibonacci(42))
+# EOF
+#     """,
+# )
+
+# py_binary(
+#     name = "fibonacci_42_py_bin",
+#     srcs = ["fibonacci_42_gen.py"],
+# )
+
+# genrule(
+#     name = "fibonacci_42",
+#     tools = [":fibonacci_42_py_bin"],
+#     outs = ["fibonacci_42.txt"],
+#     cmd  = "./$(location :fibonacci_42_py_bin) > $(OUTS)",
+# )
+
+py_genrule(
+    name = "fibonacci_42",
+    cmd  = """
+def fibonacci(n):
+    if n <= 1:
+        return 1
+    return fibonacci(n) + fibonacci(n - 1)
+print(fibonacci(42))
+    """
+)
+
+build_test(
+    name = "fibonacci_42_test",
+    targets = [
+        ":fibonacci_42",
+    ],
+)

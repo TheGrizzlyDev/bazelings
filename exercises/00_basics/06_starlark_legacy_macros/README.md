@@ -1,4 +1,4 @@
-# Extending Bazel - legacy macros
+# Extending Bazel - starlark and legacy macros
 
 We've seen how to create a basic build, with libraries, binaries and tests. We've seen how to create multiple packages and make targets in one package refer to targets in a different package via labels.
 
