@@ -1,7 +1,7 @@
 load("@bazel_skylib//rules:build_test.bzl", "build_test")
 load("macro.bzl", "py_genrule")
 
-# Can you create a py_genrule macro that expands to the following?
+# Can you create a py_genrule macro that expands to the following? You may need to use https://bazel.build/rules/lib/toplevel/native
 # 
 # genrule(
 #     name = "fibonacci_42_py_script_to_file",

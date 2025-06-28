@@ -1,0 +1,3 @@
+load("01_core.bzl", "core_test_suite")
+
+core_test_suite()
