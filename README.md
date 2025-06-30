@@ -2,6 +2,12 @@
 
 Bazelings is a set of small, incremental and hands-on exercises to teach you Bazel from the ground up. 
 
+## Prerequisites
+
+To get started with Bazel, it's recommended to use [Bazelisk](https://github.com/bazelbuild/bazelisk), a Bazel version manager. Bazelisk automatically downloads the appropriate Bazel version for your project.
+
+For detailed installation instructions, please refer to the [official Bazel documentation](https://bazel.build/install).
+
 ## But why should I learn Bazel?
 
 I made [a talk about this a few years ago](https://youtu.be/sW8b-cgqicc?si=MZxQi0aJJtsfn1M6) and though what I said back then is still valid - as time goes on there are more and more reasons to learn Bazel!

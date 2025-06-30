@@ -4,6 +4,18 @@ load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
 genrule(
     name = "hello_world",
     outs = ["hello-world.txt"],
+    # TODO: Complete the 'srcs' list with the correct labels for
+    # comma.txt, space.txt, and esclamation.txt in the correct order
+    # to form the phrase "Hello, World!".
+    # The 'cmd' already uses $(SRCS) to concatenate all listed sources.
+    srcs = [
+        "//data/words:hello.txt",
+        # Add label for comma.txt here
+        # Add label for space.txt here
+        "//data/words:world.txt",
+        # Add label for esclamation.txt here
+    ],
+    cmd = "cat $(SRCS) > $@",
 )
 
 diff_test(

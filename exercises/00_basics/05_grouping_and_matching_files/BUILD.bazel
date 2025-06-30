@@ -1,10 +1,17 @@
 load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
 
+filegroup(
+    name = "numbers",
+    # TODO: Use glob to include all num_*.txt files in this filegroup
+    srcs = [],
+)
+
 genrule(
     name = "count_to_4_glob",
     outs = ["count-to-4-glob.txt"],
-    cmd  = "cat $(location :num_1.txt) $(location :num_2.txt) $(location :num_3.txt) $(location :num_4.txt) > $(OUTS)",
-    srcs = [], # match all resources using 'num_*.txt'
+    cmd  = "cat $(SRCS) > $(OUTS)",
+    # TODO: Use glob to include all num_*.txt files directly here
+    srcs = [],
 )
 
 # read about filegroup in https://bazel.build/reference/be/general#filegroup
