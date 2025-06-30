@@ -1,5 +1,15 @@
 load("@bazel_skylib//lib:unittest.bzl", "unittest", "asserts")
 
+# TODO: starlark values - https://github.com/bazelbuild/starlark/blob/master/spec.md#value-concepts
+def _working_with_values_test(ctx):
+    env = unittest.begin(ctx)
+
+    return unittest.end(ctx)
+
+working_with_values_test = unittest.make(_working_with_values_test)
+
+# TODO: comprehensions, slicing and loops
+
 def _functions_and_lambdas_test(ctx):
     env = unittest.begin(ctx)
 
@@ -61,9 +71,12 @@ def _frozen_values_cannot_mutate_test(ctx):
 
 frozen_values_cannot_mutate_test = unittest.make(_frozen_values_cannot_mutate_test)
 
+# TODO: builtins: https://github.com/bazelbuild/starlark/blob/master/spec.md#built-in-constants-and-functions
+
 def core_test_suite():
     unittest.suite(
         "core_test_suite",
+        working_with_values_test,
         functions_and_lambdas_test,
         frozen_values_cannot_mutate_test,
     )
