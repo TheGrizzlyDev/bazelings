@@ -10,7 +10,6 @@ genrule(
     name = "count_to_4_glob",
     outs = ["count-to-4-glob.txt"],
     cmd  = "cat $(SRCS) > $(OUTS)",
-    # TODO: Use glob to include all num_*.txt files directly here
     srcs = [],
 )
 

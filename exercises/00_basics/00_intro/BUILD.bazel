@@ -3,7 +3,7 @@ load("@bazel_skylib//rules:build_test.bzl", "build_test")
 genrule(
     name = "hello_world",
     outs = ["hello-world.txt"],
-    cmd  = "echo 'Hello, World!' > $(OUTS)"
+    cmd  = "echo 'Hello, World!' > $(OUTPUTS)"
 )
 
 build_test(

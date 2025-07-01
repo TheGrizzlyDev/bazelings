@@ -2,7 +2,6 @@ load("@bazel_skylib//rules:build_test.bzl", "build_test")
 
 cc_binary(
     name = "hello_binary",
-    srcs = [],
 )
 
 build_test(

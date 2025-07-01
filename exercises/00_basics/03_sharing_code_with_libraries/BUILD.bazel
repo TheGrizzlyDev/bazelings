@@ -1,5 +1,11 @@
 load("@bazel_skylib//rules:build_test.bzl", "build_test")
 
+cc_library(
+    name = "hello_library",
+    srcs = ["library.cc"],
+    hdrs = ["library.hh"],
+)
+
 cc_binary(
     name = "hello_binary",
     srcs = ["main.cc"],
