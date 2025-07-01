@@ -1,3 +1,6 @@
+---
+target: //exercises:04_labels_in_main_workspace_test
+---
 # 04 - Labels in a workspace
 
 Labels are used in Bazel to identify a target and though you may haven't noticed it, you have been using them all along! In the previous exercises you had to add sources to rules or even wire up dependencies by their name. Those were all labels. Having said so, that was possibly the best case scenario, labels of targets in the same package are just the target name. So you basically have 3 cases:

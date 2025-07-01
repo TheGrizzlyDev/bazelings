@@ -1,3 +1,6 @@
+---
+target: //exercises:02_basic_cc_test_test
+---
 # 02 - Basic test using cc_test
 
 Based on what you learned in the previous exercise, try creating a test using [cc_test](https://bazel.build/reference/be/c-cpp#cc_test). This time `BUILD.bazel` will be completely empty, good luck!

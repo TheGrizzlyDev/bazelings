@@ -1,8 +1,13 @@
+---
+target: //exercises:00_intro_test
+---
 # 00 - Intro
 
 ## Running lessons
 
-Each lesson is an individual bazel test. You can execute them by running `bazel test //exercises:<lesson_name>_test`. Let's try that by running this lesson:
+Each lesson is an individual Bazel test. You can execute them by running `bazel test <target_value>`. The `<target_value>` for each lesson's test is provided in the metadata block at the top of this README. For this lesson, the target is `//exercises:00_intro_test`.
+
+Let's try that by running this lesson:
 
 ```
 bazel test //exercises:00_intro_test

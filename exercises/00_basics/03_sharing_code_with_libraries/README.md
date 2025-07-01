@@ -1,3 +1,6 @@
+---
+target: //exercises:03_sharing_code_with_libraries_test
+---
 # Sharing code with libraries
 
 Sometimes, we don't want to rewrite code over and over again and we try to reuse the same building blocks in multiple places. When this happens you can resort to libraries, which in Bazel are usually rules called *_library. In this scenario you want to create a library shared by both test and binary. Be careful, in the C++ rules there might be a separate attribute for header sources, so read the [docs](https://bazel.build/reference/be/c-cpp#cc_library) carefully!

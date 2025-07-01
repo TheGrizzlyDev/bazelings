@@ -1,3 +1,6 @@
+---
+target: //exercises:00_a_little_starlark_test
+---
 # 00 - A little starlark
 
 Most tutorials about Bazel focus first on the rules, helping you understand how to use Bazel in a productive way for most of its users, allowing you to use the build system without understanding much at all. That can be an effective approach. On the contrary, here we will immediately dig into Bazel's guts and get our hands dirty with custom rules. This way you can learn how to build more and more complex rules and understand the effort that goes behind existing rulesets, as well as allow you to learn how to debug someone else's rules.
