@@ -1,0 +1,14 @@
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+
+genrule(
+    name = "hello_world",
+    outs = ["hello-world.txt"],
+    cmd  = "echo 'Hello, World!' > $(OUTPUTS)"
+)
+
+build_test(
+    name = "hello_world_test",
+    targets = [
+        ":hello_world",
+    ],
+)
