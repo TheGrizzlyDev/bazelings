@@ -1,14 +1,39 @@
 load("@bazel_skylib//lib:unittest.bzl", "unittest", "asserts")
 
-# TODO: starlark values - https://github.com/bazelbuild/starlark/blob/master/spec.md#value-concepts
-def _working_with_values_test(ctx):
+def _lists_and_dictionaries_test(ctx):
     env = unittest.begin(ctx)
+
+    names = ["Bill Board", "Bon Jon Bovi", "Shanda Lear"]
+    asserts.equals(env, "Bill Board", names[2])
+
+    ages = {"Luke": 42, "Sky": 89, "Walker": 5}
+    asserts.equals(env, 89, ages["Luke"])
+
+    prepend_title = lambda name: "Sir {}" % (name)
+    names_with_titles = [
+        # invoke `prepend_title` over `names`
+    ]
+    asserts.equals(env, "Sir Bill Board", names[0])
+
+    drink_from_the_fountain_of_youth = lambda age: max(0, min(18, age - 30))
+    ages_after_drinking_from_the_fountain_of_youth = {
+        # invoke `drink_from_the_fountain_of_youth` over `ages`
+    }
+    asserts.equals(env, 12, ages["Luke"])
+    asserts.equals(env, 18, ages["Sky"])
+    asserts.equals(env, 0, ages["Walker"])
+
+    first_two_names = names
+    asserts.equals(env, [names[0], names[1]], first_two_names)
+
+    # using a for loop add the names of all the adults (age >= 18) 
+    # the list `ages`. You can use append to add to a list
+    adults = []
+    asserts.equals(env, ["Luke", "Sky"], adults)
 
     return unittest.end(ctx)
 
-working_with_values_test = unittest.make(_working_with_values_test)
-
-# TODO: comprehensions, slicing and loops
+lists_and_dictionaries_test = unittest.make(_lists_and_dictionaries_test)
 
 def _functions_and_lambdas_test(ctx):
     env = unittest.begin(ctx)
@@ -76,7 +101,7 @@ frozen_values_cannot_mutate_test = unittest.make(_frozen_values_cannot_mutate_te
 def core_test_suite():
     unittest.suite(
         "core_test_suite",
-        working_with_values_test,
+        lists_and_dictionaries_test,
         functions_and_lambdas_test,
         frozen_values_cannot_mutate_test,
     )
