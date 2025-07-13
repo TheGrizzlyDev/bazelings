@@ -1,14 +1,25 @@
 load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("macro.bzl", "py_symbolic_genrule")
 
-genrule(
-    name = "hello_world",
-    outs = ["hello-world.txt"],
-    cmd  = "echo 'Hello, World!' > $(OUTPUTS)"
+# This is the same as 00_basics/06_starlark_legacy_macros, but you should instead use
+# symbolic macros
+
+py_symbolic_genrule(
+    name = "fibonacci_42",
+    cmd  = """
+def fibonacci(n):
+    if n < 0:
+        return 0
+    if n <= 1:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
+print(fibonacci(42))
+    """
 )
 
 build_test(
-    name = "hello_world_test",
+    name = "fibonacci_42_test",
     targets = [
-        ":hello_world",
+        ":fibonacci_42",
     ],
 )
