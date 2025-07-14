@@ -1,7 +1,7 @@
 ---
-target: //exercises:02_rules_and_providers_test
+target: //exercises:10_rules_and_providers_test
 ---
-# 02 - Rules and providers
+# 10 - Rules and providers
 
 Rules are Bazel's main extension mechanism and they allow you to support custom functionality. Rules are declared in a similar way to the symbolic macros we've just looked at, except you invoke the `rule` function instead of `macro`. Similarly to macros, rules have a set of attributes, which are declared in the same fashion (minus the inheritance mechanism).
 

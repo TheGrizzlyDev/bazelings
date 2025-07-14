@@ -1,7 +1,7 @@
 ---
-target: //exercises:01_symbolic_macros_test
+target: //exercises:09_symbolic_macros_test
 ---
-# 01 - Symbolic macros
+# 09 - Symbolic macros
 
 Symbolic macros are the newer approach to macros in Bazel. I won't be going into why you should be using symbolic macros here, but you can read the [upstream documentation about it](https://bazel.build/extending/legacy-macros#no-legacy-macros). Symbolic macros are very similar to legacy macros as in they are very simple starlark functions used to instantiate groups of 1 or more targets in a more convenient way. They aren't a way to build complex logic though, in which case you're better off using rules, which we'll explain soon after.
 

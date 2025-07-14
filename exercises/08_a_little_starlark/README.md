@@ -1,5 +1,5 @@
 ---
-target: //exercises:00_a_little_starlark_test
+target: //exercises:08_a_little_starlark_test
 ---
 # 00 - A little starlark
 
