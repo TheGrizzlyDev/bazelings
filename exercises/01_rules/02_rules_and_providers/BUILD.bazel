@@ -1,14 +1,21 @@
 load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("defs.bzl", "cast", "spell")
 
-genrule(
-    name = "hello_world",
-    outs = ["hello-world.txt"],
-    cmd  = "echo 'Hello, World!' > $(OUTPUTS)"
+spell(
+    name = "fireball",
+    mana_cost = 42,
+)
+
+cast(
+    name = "kaboom",
+    spell = "fireball",
+    mana = 10,
+    deps = [":fireball"],
 )
 
 build_test(
-    name = "hello_world_test",
+    name = "kaboom_test",
     targets = [
-        ":hello_world",
+        ":kaboom",
     ],
 )
